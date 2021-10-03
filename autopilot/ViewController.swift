@@ -23,66 +23,68 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // Watch Bluetooth connection
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("connectionChanged:"), name: BLEServiceChangedStatusNotification, object: nil)
+        //TODO: Watch Bluetooth connection
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.connectionChanged(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         
         // Start the Bluetooth discovery process
-        btDiscoverySharedInstance
+        btDiscoverySharedInstance.startScanning()
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: BLEServiceChangedStatusNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
     }
 
     
 
     @IBAction func plusOnePressed(sender: AnyObject) {
-        sendMessage("1")
+        sendMessage(message: "1")
     }
     
     @IBAction func minusOnePressed(sender: AnyObject) {
-        sendMessage("2")
+        sendMessage(message: "2")
     }
     
     @IBAction func plusTenPressed(sender: AnyObject) {
-        sendMessage("3")
+        sendMessage(message: "4")
     }
     
     @IBAction func minusTenPressed(sender: AnyObject) {
-        sendMessage("4")
+        sendMessage(message: "5")
     }
     
     @IBAction func autoPressed(sender: AnyObject) {
-        sendMessage("5")
+        sendMessage(message: "3")
     }
     
     @IBAction func standbyPressed(sender: AnyObject) {
-        sendMessage("6")
+        sendMessage(message: "6")
     }
     
     func sendMessage(message: String) {
         // Send position to BLE Shield (if service exists and is connected)
         if let bleService = btDiscoverySharedInstance.bleService {
-            bleService.sendMessage(message)
+            bleService.sendMessage(message: message)
         }
     }
 
     
-        
-    func connectionChanged(notification: NSNotification) {
-        // Connection status changed. Indicate on GUI.
-        let userInfo = notification.userInfo as! [String: Bool]
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            // Set image based on connection status
-            if let isConnected: Bool = userInfo["isConnected"] {
-                if isConnected {
-                    self.connectionStatus.text = ""
-                } else {
-                    self.connectionStatus.text = "Not connected"
-                }
-            }
-        });
+
+    @objc func connectionChanged(_ notification: Notification) {
+      // Connection status changed. Indicate on GUI.
+      let userInfo = (notification as NSNotification).userInfo as! [String: Bool]
+      
+      DispatchQueue.main.async(execute: {
+        // Set image based on connection status
+        if let isConnected: Bool = userInfo["isConnected"] {
+          if isConnected {
+            self.connectionStatus.text = ""
+            
+            
+          } else {
+            self.connectionStatus.text = "Not connected"
+          }
+        }
+      });
     }
     
     override func didReceiveMemoryWarning() {
