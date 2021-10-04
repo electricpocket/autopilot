@@ -1,6 +1,6 @@
-# iOS remote for Autohelm 800
+# iOS remote for Navico Autohelm TP5000
 
-This is a hobby project on how to make an iOS remote control for the Autohelm 800 autopilot.
+This is a project on how to make an iOS remote control for the Navico Autohelm TP5000 tiller pilot.
 
 <img src="media/app_and_autohelm800.JPG" alt="App and Autohelm 800" width="500"/>
 
@@ -8,17 +8,17 @@ This is a hobby project on how to make an iOS remote control for the Autohelm 80
 
 ## Electronics
 
-My initial idea was to use the remote control port that is located underneath the Autohelm 800, but I had no luck decoding the protocol used. I tried both listening for Serial and I2C, but I suspect that it is some proprietary communication protocol by Raymarine, and of course there is no documentation on this.
+The initial idea was to use the remote control port that is located underneath the Autohelm 800, but there was no luck decoding the protocol used. There is no documentation on this. Tried using the NMEA Wind sentences to see if those could be used to control the behaviour with it in wind mode but there was no consistent behaviour - maybe the wind autopilot feature is broken on the 2nd hand device we have
 
-So instead I went for the other obvious (and less elegant) solution - simulating button presses with relays.
+So instead we went for the other obvious (and less elegant) solution - simulating button presses with relays.
 
 Below is a picture of the final board. Luckily there is quite a lot of space beside the main pcb in the Autohelm, and it even has an unused screw hole for mounting.
 
 <img src="media/final_pcb.png" alt="Final PCB" width="500"/>
 
 ### Bill of materials
-- 1 x [Blueduino Rev2](https://www.tindie.com/products/AprilBrother/blueduino-rev2-arduino-compatible-plus-ble/)
-- 5 x Reed Relay W117DIP-89
+- 1 x [Arduino BLE nano33](https://store.arduino.cc/products/arduino-nano-33-ble-with-headers?selectedStore=eu)
+- 1 x Arduino 4 relay shield ( https://store.arduino.cc/products/arduino-4-relays-shield?selectedStore=eu )
 
 ### Diagrams and wiring
 
