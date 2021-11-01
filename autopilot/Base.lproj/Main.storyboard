@@ -19,8 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUc-zp-bTM">
-                                <rect key="frame" x="109" y="392" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUc-zp-bTM">
+                                <rect key="frame" x="48" y="545" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="+1" backgroundImage="GreyOval">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -29,8 +30,9 @@
                                     <action selector="plusOnePressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="t5F-L8-Wyq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a10-34-pLq">
-                                <rect key="frame" x="372" y="392" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a10-34-pLq">
+                                <rect key="frame" x="254" y="544" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="-1" backgroundImage="GreyOval">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,8 +42,9 @@
                                     <action selector="minusOnePressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="GNp-tv-mo1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-HG-xZf">
-                                <rect key="frame" x="109" y="216" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-HG-xZf">
+                                <rect key="frame" x="48" y="372" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="+10" backgroundImage="GreyOval">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,8 +54,9 @@
                                     <action selector="plusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="IKj-Nd-0hT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
-                                <rect key="frame" x="109" y="49" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
+                                <rect key="frame" x="48" y="200" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="AUTO" backgroundImage="RedOval">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,8 +65,9 @@
                                     <action selector="autoPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="Csd-uQ-Cuw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-UW-ZPG">
-                                <rect key="frame" x="372" y="216" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-UW-ZPG">
+                                <rect key="frame" x="254" y="372" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="-10" backgroundImage="GreyOval">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,46 +77,68 @@
                                     <action selector="minusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="4Pp-0H-WCz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY1-Xd-0Jt">
-                                <rect key="frame" x="372" y="49" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY1-Xd-0Jt">
+                                <rect key="frame" x="254" y="194" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="STANDBY" backgroundImage="RedOval">
+                                <state key="normal" title="Auto Off" backgroundImage="RedOval">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="standbyPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="vJZ-Lb-Pd4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-7u-VEr">
-                                <rect key="frame" x="243" y="38" width="114" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-7u-VEr">
+                                <rect key="frame" x="150" y="809" width="114" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TP5000 Remote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-x6-iby">
+                                <rect key="frame" x="70" y="841" width="275" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Automode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jU-fa-lgq" userLabel="Mode status">
+                                <rect key="frame" x="51" y="168" width="114" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redOff" id="W5Y-DI-46m">
+                                <rect key="frame" x="171" y="731" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redOff" id="Han-UL-yJ2" userLabel="autoLight">
+                                <rect key="frame" x="72" y="88" width="72" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nmea mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAX-Rd-Wfj" userLabel="Mode status">
+                                <rect key="frame" x="257" y="168" width="114" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redOff" id="aRw-8R-Yz2" userLabel="nmeaAuto">
+                                <rect key="frame" x="278" y="88" width="72" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XUc-zp-bTM" secondAttribute="bottom" constant="30" id="AcR-xt-hze"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="a10-34-pLq" secondAttribute="trailing" constant="20" id="COp-OV-mt3"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a10-34-pLq" secondAttribute="bottom" constant="30" id="FKK-mm-jhv"/>
-                            <constraint firstItem="AaH-HG-xZf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Fug-1f-gJO"/>
-                            <constraint firstItem="8Rl-7u-VEr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HYw-L6-sDd"/>
-                            <constraint firstItem="a10-34-pLq" firstAttribute="top" secondItem="JIT-UW-ZPG" secondAttribute="bottom" constant="30" id="IqA-Bd-9y4"/>
-                            <constraint firstItem="JIT-UW-ZPG" firstAttribute="top" secondItem="oY1-Xd-0Jt" secondAttribute="bottom" constant="30" id="J0g-fY-KVT"/>
-                            <constraint firstItem="AaH-HG-xZf" firstAttribute="top" secondItem="kMF-K5-CWf" secondAttribute="bottom" constant="30" id="S4H-cv-g70"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oY1-Xd-0Jt" secondAttribute="trailing" constant="20" id="Ur3-Ni-BRc"/>
-                            <constraint firstItem="XUc-zp-bTM" firstAttribute="top" secondItem="AaH-HG-xZf" secondAttribute="bottom" constant="30" id="gmF-NN-okJ"/>
-                            <constraint firstItem="XUc-zp-bTM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hyt-YA-d0C"/>
-                            <constraint firstItem="kMF-K5-CWf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="mFD-ag-qDH"/>
-                            <constraint firstItem="8Rl-7u-VEr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="oyV-Ob-EUV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JIT-UW-ZPG" secondAttribute="trailing" constant="20" id="sP7-3o-xCH"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="auto" destination="kMF-K5-CWf" id="oYK-oI-WIM"/>
+                        <outlet property="autoLight" destination="Han-UL-yJ2" id="LE7-Pa-hpW"/>
                         <outlet property="connectionStatus" destination="8Rl-7u-VEr" id="AZ9-jl-Sda"/>
                         <outlet property="minusOne" destination="a10-34-pLq" id="Va6-7f-ENj"/>
                         <outlet property="minusTen" destination="JIT-UW-ZPG" id="QyH-Ky-gpw"/>
+                        <outlet property="modeLight" destination="W5Y-DI-46m" id="BES-Oa-0Vq"/>
+                        <outlet property="modeStatus" destination="7jU-fa-lgq" id="EFj-gT-O6z"/>
                         <outlet property="plusOne" destination="XUc-zp-bTM" id="491-QY-BJu"/>
                         <outlet property="plusTen" destination="AaH-HG-xZf" id="Gza-2c-AzP"/>
                         <outlet property="standby" destination="oY1-Xd-0Jt" id="8eL-jz-LhT"/>
@@ -119,11 +146,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417" y="363"/>
+            <point key="canvasLocation" x="415.94202898550731" y="362.94642857142856"/>
         </scene>
     </scenes>
     <resources>
         <image name="GreyOval" width="120" height="119"/>
         <image name="RedOval" width="120" height="119"/>
+        <image name="redOff" width="32" height="32"/>
     </resources>
 </document>

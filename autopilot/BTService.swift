@@ -13,12 +13,15 @@ import CoreBluetooth
 let BlueduinoUUID = NSUUID(uuidString: "7AF496E9-0415-E383-4EDB-9E948F2C8966")
 let BLEServiceUUID = CBUUID(string: "180C") // "7AF496E9-0415-E383-4EDB-9E948F2C8966"
 let TxCharUUID = CBUUID(string: "FFF2")
+let AnalogueCharUUID = CBUUID(string: "2A56")
 
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
+let BLEServiceModeStatusNotification = "kBLEServiceModeStatusNotification"
 
 class BTService: NSObject, CBPeripheralDelegate {
   var peripheral: CBPeripheral?
   var positionCharacteristic: CBCharacteristic?
+  var analogueCharacteristic: CBCharacteristic?
   
   init(initWithPeripheral peripheral: CBPeripheral) {
     super.init()
@@ -49,7 +52,7 @@ class BTService: NSObject, CBPeripheralDelegate {
   
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
     print("peripheral services")
-    let uuidsForBTService: [CBUUID] = [TxCharUUID]
+    let uuidsForBTService: [CBUUID] = [TxCharUUID,AnalogueCharUUID]
     
     if (peripheral != self.peripheral) {
       // Wrong Peripheral
@@ -91,17 +94,24 @@ class BTService: NSObject, CBPeripheralDelegate {
         if characteristic.uuid == TxCharUUID {
           self.positionCharacteristic = (characteristic)
             peripheral.setNotifyValue(true, for: characteristic)
-          
+            print("TX Characteristic: \(characteristic.uuid)")
           // Send notification that Bluetooth is connected and all required characteristics are discovered
             self.sendBTServiceNotificationWithIsBluetoothConnected(isBluetoothConnected: true)
         }
+        else if characteristic.uuid == AnalogueCharUUID {
+            self.analogueCharacteristic = (characteristic)
+              peripheral.setNotifyValue(true, for: characteristic)
+            print("RX Characteristic: \(characteristic.uuid)")
+            // Send notification that Bluetooth is connected and all required characteristics are discovered
+              self.sendBTServiceNotificationWithIsBluetoothConnected(isBluetoothConnected: true)
+          }
       }
     }
   }
   
   // Mark: - Private
   
-  func sendMessage(message: String) {
+  func sendMessage(message: String)  {
     // See if characteristic has been discovered before writing to it
     if let positionCharacteristic = self.positionCharacteristic {
       // Need a mutable var to pass to writeValue function
@@ -110,6 +120,32 @@ class BTService: NSObject, CBPeripheralDelegate {
       
     }
   }
+    
+    func readMessage() {
+      // See if characteristic has been discovered before writing to it
+      if let analogueCharacteristic = self.analogueCharacteristic {
+        // Need a mutable var to pass to writeValue function
+          //let data = message.data(using:  String.Encoding.utf8)
+         print("Reading value")
+          self.peripheral?.readValue(for: analogueCharacteristic)
+      }
+     
+    }
+  
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?
+    ) {
+        guard let data = characteristic.value else {
+            // no data transmitted, handle if needed
+            return
+        }
+        if characteristic.uuid == AnalogueCharUUID {
+            // Decode data and map it to your model object
+            let str = String(decoding: data, as: UTF8.self)
+            print("Value Received: \((str as String))")
+            let connectionDetails = ["modeStatus": str]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEServiceModeStatusNotification) , object: self, userInfo: connectionDetails)
+        }
+    }
   
   func sendBTServiceNotificationWithIsBluetoothConnected(isBluetoothConnected: Bool) {
     let connectionDetails = ["isConnected": isBluetoothConnected]

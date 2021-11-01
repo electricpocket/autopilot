@@ -5,28 +5,42 @@
 #include <ArduinoBLE.h>
 
 
-#define BUTTON_DELAY 200
+#define BUTTON_DELAY 2000
 
-#define PORT_ONE 7 //pin 7 D4
-#define STBD_ONE 10 //pin 10 D7
-#define AUTO 11 //pin 11 D8
+#define PORT_ONE 2 //pin 5 D2
+#define STBD_ONE 3 //pin 6 D3
+#define AUTO 4 //pin 7 D4
 
 static const char* greeting = "Hello World!";
+int sensorPin = A0;    // Anaolgue select the input pin for led flashing light on the Navico
+float modeOnLevel = 270; //anaolgue voltage reading for high : 1024*1.4/3.3 = 424
+bool modeStatus = false;
 
-BLEService greetingService("180C");  // User defined service
+BLEService autohelm("180C");  // User defined service
 
-BLEStringCharacteristic greetingCharacteristic("2A56",  // standard 16-bit characteristic UUID
-    BLERead, 13); // remote clients will only be able to read this
+BLEStringCharacteristic autoModeCharacteristic("2A56",  // standard 16-bit characteristic UUID
+    BLERead | BLENotify, 13); // remote clients will only be able to read this
 
 
 BLEStringCharacteristic autohelmCharacteristic("FFF2",  // standard 16-bit characteristic UUID
     BLERead | BLEWrite,6); // remote clients will be able to read & write this
 
+void  modeCharacteristicRead(BLEDevice central, BLECharacteristic characteristic) {
+  // central requested new value from characteristic
+  Serial.print("Mode Characteristic event, read: ");
+  String val = autoModeCharacteristic.value();
+  Serial.println(val);
+  float autoValue = analogRead(sensorPin);
+  autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string
+  Serial.print("Read analogue: ");
+  Serial.println(String(autoValue));
+}
 
 void switchCharacteristicWritten(BLEDevice central, BLECharacteristic characteristic) {
   // central wrote new value to characteristic, update LED
   Serial.print("Characteristic event, written: ");
   String val = (char*)(characteristic.value());
+  Serial.println(val);
   switch (val.charAt(0)) {
         case '1':
           pressButton(PORT_ONE);
@@ -52,11 +66,10 @@ void pressButton(int pin){
 }
 
 void setup() {
-  Serial.begin(9600);    // initialize serial communication
-  while (!Serial);
+  //Serial.begin(9600);    // initialize serial communication
+  //while (!Serial);
 
   pinMode(LED_BUILTIN, OUTPUT); // initialize the built-in LED pin
-
   //Init output pins
   pinMode(PORT_ONE, OUTPUT);
   digitalWrite(PORT_ONE, LOW);
@@ -68,25 +81,30 @@ void setup() {
   digitalWrite(AUTO, LOW);
 
   if (!BLE.begin()) {   // initialize BLE
-    Serial.println("starting BLE failed!");
+    //Serial.println("starting BLE failed!");
     while (1);
   }
 
   BLE.setLocalName("Autohelm");  // Set name for connection
-  BLE.setAdvertisedService(greetingService); // Advertise service
+  BLE.setAdvertisedService(autohelm); // Advertise service
   // assign event handlers for characteristic
   autohelmCharacteristic.setEventHandler(BLEWritten, switchCharacteristicWritten);
-
+  autoModeCharacteristic.setEventHandler(BLERead, modeCharacteristicRead);
   
-  greetingService.addCharacteristic(greetingCharacteristic); // Add characteristic to service
-  greetingService.addCharacteristic(autohelmCharacteristic); // Add characteristic to service
-  BLE.addService(greetingService); // Add service
-  greetingCharacteristic.setValue(greeting); // Set greeting string
+  autohelm.addCharacteristic(autohelmCharacteristic); // Add characteristic to service
+  autohelm.addCharacteristic(autoModeCharacteristic); // Add characteristic to service
+  
+  BLE.addService(autohelm); // Add service
+  
+  float sensorValue = analogRead(sensorPin);
+  autoModeCharacteristic.setValue(String(sensorValue)); // Set greeting string
 
   BLE.advertise();  // Start advertising
-  Serial.print("Peripheral device iPhone: ");
-  Serial.println(BLE.address());
-  Serial.println("Waiting for connections...");
+  //Serial.print("Peripheral device iPhone: ");
+  //Serial.println(BLE.address());
+  //Serial.println("Waiting for connections...");
+  Serial.print("Read analogue: ");
+  Serial.println(String(sensorValue));
 }
 
 void loop() {
@@ -94,21 +112,38 @@ void loop() {
 
   // if a central is connected to the peripheral:
   if (central) {
-    Serial.print("Connected to central iPhone: ");
+    //Serial.print("Connected to central iPhone: ");
     // print the central's BT address:
-    Serial.println(central.address());
+    //Serial.println(central.address());
     // turn on the LED to indicate the connection:
     digitalWrite(LED_BUILTIN, HIGH);
 
     while (central.connected())
     {
+      float autoValue = analogRead(sensorPin);
+      if (( autoValue > modeOnLevel) and (modeStatus == false))
+      {
+        modeStatus = true;
+        autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string 
+        Serial.println("ModeOn"); 
+      }
+      else if (( autoValue <= modeOnLevel) and (modeStatus != false))
+      {
+        modeStatus = false;
+        autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string  
+        Serial.println("ModeOff"); 
+      }
+      
+      Serial.print("Read analogue: ");
+      Serial.println(String(autoValue));
+      delay(250);
       //handle autohelm commands 
     }// keep looping while connected
     
     // when the central disconnects, turn off the LED:
     digitalWrite(LED_BUILTIN, LOW);
-    Serial.print("Disconnected from central iPhone: ");
-    Serial.println(central.address());
+    //Serial.print("Disconnected from central iPhone: ");
+    //Serial.println(central.address());
   }
 }
   

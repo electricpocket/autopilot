@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var auto: UIButton!
     @IBOutlet weak var standby: UIButton!
     @IBOutlet weak var connectionStatus: UILabel!
+    @IBOutlet weak var modeStatus: UILabel!
+    @IBOutlet weak var modeLight: UIImageView!
+    @IBOutlet weak var autoLight: UIImageView!
     
     //let connectionManager : ConnectionManager = ConnectionManager.sharedInstance
     
@@ -26,12 +29,18 @@ class ViewController: UIViewController {
         //TODO: Watch Bluetooth connection
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.connectionChanged(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.modeChanged(_:)), name: NSNotification.Name(rawValue: BLEServiceModeStatusNotification), object: nil)
+        
         // Start the Bluetooth discovery process
         btDiscoverySharedInstance.startScanning()
+        self.modeStatus.text = "automode status unknown"
+        self.modeLight.image = (UIImage(named:"redOff"))
+        self.autoLight.image = (UIImage(named:"redOff"))
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BLEServiceModeStatusNotification), object: nil)
     }
 
     
@@ -66,6 +75,13 @@ class ViewController: UIViewController {
             bleService.sendMessage(message: message)
         }
     }
+    
+    func readMessage() {
+        // Read analogue Mode value BLE Shield (if service exists and is connected)
+        if let bleService = btDiscoverySharedInstance.bleService {
+            bleService.readMessage()
+        }
+    }
 
     
 
@@ -78,12 +94,34 @@ class ViewController: UIViewController {
         if let isConnected: Bool = userInfo["isConnected"] {
           if isConnected {
             self.connectionStatus.text = ""
+            self.modeLight.image = (UIImage(named:"greenOn"))
             
             
           } else {
             self.connectionStatus.text = "Not connected"
+            self.modeLight.image = (UIImage(named:"redOff"))
           }
         }
+      });
+    }
+    
+    @objc func modeChanged(_ notification: Notification) {
+      // Autom mode light tatus changed. Indicate on GUI.
+      let userInfo = (notification as NSNotification).userInfo as! [String: String]
+      
+      DispatchQueue.main.async(execute: {
+        // Set image based on connection status
+    
+        self.modeStatus.text = userInfo["modeStatus"]
+        let voltage = Double(userInfo["modeStatus"] ?? "0.0")
+        if (voltage ?? 0.0 > 270.0)
+        {
+            self.autoLight.image = (UIImage(named:"redOn"))
+        }
+        else {
+            self.autoLight.image = (UIImage(named:"redOff"))
+        }
+        
       });
     }
     
