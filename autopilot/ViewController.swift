@@ -46,11 +46,19 @@ class ViewController: UIViewController {
     
 
     @IBAction func plusOnePressed(sender: AnyObject) {
-        sendMessage(message: "1")
+        sendMessage(message: "11")
+    }
+    
+    @IBAction func plusOneReleased(sender: AnyObject) {
+        sendMessage(message: "21")
     }
     
     @IBAction func minusOnePressed(sender: AnyObject) {
-        sendMessage(message: "2")
+        sendMessage(message: "12")
+    }
+    
+    @IBAction func minusOneReleased(sender: AnyObject) {
+        sendMessage(message: "22")
     }
     
     @IBAction func plusTenPressed(sender: AnyObject) {

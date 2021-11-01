@@ -19,18 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a10-34-pLq">
-                                <rect key="frame" x="252" y="533" width="119" height="156"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="-1" backgroundImage="GreyStbd">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="minusOnePressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="GNp-tv-mo1"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-HG-xZf">
                                 <rect key="frame" x="48" y="372" width="120" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,8 +31,19 @@
                                     <action selector="plusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="IKj-Nd-0hT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
+                                <rect key="frame" x="150" y="216" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="AUTO" backgroundImage="RedOval">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="autoPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="Csd-uQ-Cuw"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-UW-ZPG">
-                                <rect key="frame" x="254" y="372" width="120" height="119"/>
+                                <rect key="frame" x="255" y="372" width="118" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="-10" backgroundImage="GreyOval">
@@ -97,24 +96,29 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUc-zp-bTM">
                                 <rect key="frame" x="51" y="533" width="119" height="156"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="+1" backgroundImage="GreyPort">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="plusOnePressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="t5F-L8-Wyq"/>
+                                    <action selector="plusOnePressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="2bQ-8U-UmN"/>
+                                    <action selector="plusOneReleasedWithSender:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="KvH-am-bUX"/>
+                                    <action selector="plusOneReleasedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ebL-Uv-57e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
-                                <rect key="frame" x="150" y="216" width="120" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a10-34-pLq">
+                                <rect key="frame" x="257" y="533" width="119" height="156"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="AUTO" backgroundImage="RedOval">
+                                <state key="normal" title="-1" backgroundImage="GreyStbd">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="autoPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="Csd-uQ-Cuw"/>
+                                    <action selector="minusOnePressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="GNp-tv-mo1"/>
+                                    <action selector="minusOneReleasedWithSender:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="9Th-9s-aYu"/>
+                                    <action selector="minusOneReleasedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G5e-og-huy"/>
                                 </connections>
                             </button>
                         </subviews>
