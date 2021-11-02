@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         
         // Start the Bluetooth discovery process
         btDiscoverySharedInstance.startScanning()
-        self.modeStatus.text = "automode status unknown"
+        self.modeStatus.text = "Compass"
         //self.modeLight.image = (UIImage(named:"redOff"))
         self.setBTDiscoveryImage()
         self.autoLight.image = (UIImage(named:"redOff"))
@@ -106,13 +106,13 @@ class ViewController: UIViewController {
         // Set image based on connection status
         if let isConnected: Bool = userInfo["isConnected"] {
           if isConnected {
-            self.connectionStatus.text = ""
+            self.connectionStatus.text = "Connected"
             self.modeLight.stopAnimating()
             self.modeLight.image = (UIImage(named:"btOn"))
             
             
           } else {
-            self.connectionStatus.text = "Not connected"
+            self.connectionStatus.text = "Searching..."
             //self.modeLight.image = (UIImage(named:"btOff"))
             self.setBTDiscoveryImage()
           }
@@ -127,14 +127,16 @@ class ViewController: UIViewController {
       DispatchQueue.main.async(execute: {
         // Set image based on connection status
     
-        self.modeStatus.text = userInfo["modeStatus"]
+        //self.modeStatus.text = userInfo["modeStatus"]
         let voltage = Double(userInfo["modeStatus"] ?? "0.0")
         if (voltage ?? 0.0 > 270.0)
         {
             self.autoLight.image = (UIImage(named:"redOn"))
+            self.modeStatus.text = userInfo["Compass"]
         }
         else {
             self.autoLight.image = (UIImage(named:"redOff"))
+            self.modeStatus.text = userInfo["Compass"]
         }
         
       });
