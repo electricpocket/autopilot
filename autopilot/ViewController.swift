@@ -34,7 +34,8 @@ class ViewController: UIViewController {
         // Start the Bluetooth discovery process
         btDiscoverySharedInstance.startScanning()
         self.modeStatus.text = "automode status unknown"
-        self.modeLight.image = (UIImage(named:"redOff"))
+        //self.modeLight.image = (UIImage(named:"redOff"))
+        self.setBTDiscoveryImage()
         self.autoLight.image = (UIImage(named:"redOff"))
     }
     
@@ -102,12 +103,14 @@ class ViewController: UIViewController {
         if let isConnected: Bool = userInfo["isConnected"] {
           if isConnected {
             self.connectionStatus.text = ""
-            self.modeLight.image = (UIImage(named:"greenOn"))
+            self.modeLight.stopAnimating()
+            self.modeLight.image = (UIImage(named:"btOn"))
             
             
           } else {
             self.connectionStatus.text = "Not connected"
-            self.modeLight.image = (UIImage(named:"redOff"))
+            //self.modeLight.image = (UIImage(named:"btOff"))
+            self.setBTDiscoveryImage()
           }
         }
       });
@@ -136,6 +139,28 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setBTDiscoveryImage()
+    {
+        self.modeLight.animationImages = self.animatedImages(for: "bt")
+        self.modeLight.animationDuration = 0.9
+        self.modeLight.animationRepeatCount = 0
+        self.modeLight.image = self.modeLight.animationImages?.first
+        self.modeLight.startAnimating()
+    }
+    
+    
+    func animatedImages(for name: String) -> [UIImage] {
+        
+        var i = 0
+        var images = [UIImage]()
+        let imName = "\(name)\(i)"
+        while let image = UIImage(named: "\(name)\(i)") {
+            images.append(image)
+            i += 1
+        }
+        return images
     }
 
 }

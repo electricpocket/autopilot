@@ -75,7 +75,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redOff" id="W5Y-DI-46m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btOff" id="W5Y-DI-46m">
                                 <rect key="frame" x="171" y="731" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
@@ -146,6 +146,7 @@
         <image name="GreyPort" width="119" height="120"/>
         <image name="GreyStbd" width="119" height="120"/>
         <image name="RedOval" width="120" height="119"/>
+        <image name="btOff" width="32" height="32"/>
         <image name="redOff" width="32" height="32"/>
     </resources>
 </document>
