@@ -19,18 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-HG-xZf">
-                                <rect key="frame" x="48" y="372" width="120" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="+10" backgroundImage="GreyOval">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="plusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="IKj-Nd-0hT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
                                 <rect key="frame" x="150" y="216" width="120" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,18 +28,8 @@
                                 </state>
                                 <connections>
                                     <action selector="autoPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="Csd-uQ-Cuw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-UW-ZPG">
-                                <rect key="frame" x="255" y="372" width="118" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="-10" backgroundImage="GreyOval">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="minusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="4Pp-0H-WCz"/>
+                                    <action selector="autoReleasedWithSender:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="Gbw-Ai-win"/>
+                                    <action selector="autoReleasedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eIa-z3-AZg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-7u-VEr">
@@ -129,11 +107,9 @@
                         <outlet property="autoLight" destination="Han-UL-yJ2" id="LE7-Pa-hpW"/>
                         <outlet property="connectionStatus" destination="8Rl-7u-VEr" id="AZ9-jl-Sda"/>
                         <outlet property="minusOne" destination="a10-34-pLq" id="Va6-7f-ENj"/>
-                        <outlet property="minusTen" destination="JIT-UW-ZPG" id="QyH-Ky-gpw"/>
                         <outlet property="modeLight" destination="W5Y-DI-46m" id="BES-Oa-0Vq"/>
                         <outlet property="modeStatus" destination="7jU-fa-lgq" id="EFj-gT-O6z"/>
                         <outlet property="plusOne" destination="XUc-zp-bTM" id="491-QY-BJu"/>
-                        <outlet property="plusTen" destination="AaH-HG-xZf" id="Gza-2c-AzP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -142,7 +118,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="GreyOval" width="120" height="119"/>
         <image name="GreyPort" width="119" height="120"/>
         <image name="GreyStbd" width="119" height="120"/>
         <image name="RedOval" width="120" height="119"/>

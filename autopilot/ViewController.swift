@@ -47,31 +47,35 @@ class ViewController: UIViewController {
     
 
     @IBAction func plusOnePressed(sender: AnyObject) {
-        sendMessage(message: "11")
+        sendMessage(message: "1")
     }
     
     @IBAction func plusOneReleased(sender: AnyObject) {
-        sendMessage(message: "21")
-    }
-    
-    @IBAction func minusOnePressed(sender: AnyObject) {
-        sendMessage(message: "12")
-    }
-    
-    @IBAction func minusOneReleased(sender: AnyObject) {
-        sendMessage(message: "22")
-    }
-    
-    @IBAction func plusTenPressed(sender: AnyObject) {
         sendMessage(message: "4")
     }
     
-    @IBAction func minusTenPressed(sender: AnyObject) {
+    @IBAction func minusOnePressed(sender: AnyObject) {
+        sendMessage(message: "2")
+    }
+    
+    @IBAction func minusOneReleased(sender: AnyObject) {
         sendMessage(message: "5")
+    }
+    
+    @IBAction func plusTenPressed(sender: AnyObject) {
+        sendMessage(message: "8")
+    }
+    
+    @IBAction func minusTenPressed(sender: AnyObject) {
+        sendMessage(message: "9")
     }
     
     @IBAction func autoPressed(sender: AnyObject) {
         sendMessage(message: "3")
+    }
+    
+    @IBAction func autoReleased(sender: AnyObject) {
+        sendMessage(message: "6")
     }
     
     @IBAction func standbyPressed(sender: AnyObject) {

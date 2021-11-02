@@ -5,7 +5,7 @@
 #include <ArduinoBLE.h>
 
 
-#define BUTTON_DELAY 2000
+#define BUTTON_DELAY 500
 
 #define PORT_ONE 2 //pin 5 D2
 #define STBD_ONE 3 //pin 6 D3
@@ -40,16 +40,25 @@ void switchCharacteristicWritten(BLEDevice central, BLECharacteristic characteri
   // central wrote new value to characteristic, update LED
   Serial.print("Characteristic event, written: ");
   String val = (char*)(characteristic.value());
-  Serial.println(val);
+  Serial.println(val.charAt(0));
   switch (val.charAt(0)) {
         case '1':
-          pressButton(PORT_ONE);
+          digitalWrite(PORT_ONE, HIGH);
           break;
         case '2':
-          pressButton(STBD_ONE);
+          digitalWrite(STBD_ONE, HIGH);
           break;
         case '3':
-          pressButton(AUTO);
+          digitalWrite(AUTO, HIGH);
+          break;
+        case '4':
+          digitalWrite(PORT_ONE, LOW);
+          break;
+        case '5':
+          digitalWrite(STBD_ONE, LOW);
+          break;
+        case '6':
+          digitalWrite(AUTO, LOW);
           break;
         default:
           Serial.print("Unknown command: ");
@@ -142,6 +151,9 @@ void loop() {
     
     // when the central disconnects, turn off the LED:
     digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(PORT_ONE, LOW);
+    digitalWrite(STBD_ONE, LOW);
+    digitalWrite(AUTO, LOW);
     //Serial.print("Disconnected from central iPhone: ");
     //Serial.println(central.address());
   }
