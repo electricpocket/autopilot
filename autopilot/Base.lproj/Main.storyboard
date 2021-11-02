@@ -76,7 +76,7 @@
                                 <rect key="frame" x="51" y="533" width="119" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="+1" backgroundImage="GreyPort">
+                                <state key="normal" backgroundImage="GreyPort">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -89,7 +89,7 @@
                                 <rect key="frame" x="257" y="533" width="119" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="-1" backgroundImage="GreyStbd">
+                                <state key="normal" backgroundImage="GreyStbd">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
