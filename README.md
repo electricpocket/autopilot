@@ -9,7 +9,7 @@ This project is for an iOS Bluetooth remote control for the Navico TP5000 autopi
 ## Design
 The basic idea was to mount a bluetooth module inside the Navico TP5000 that would communicate with an iPhone iOS app to send instructions via Bluetooth LE to the TP5000 to turn to port or starboard.
 
-Attempts to talk to and control the TP5000 over NMEA0183 via the yellow/green NMEA wires on the power lead failed, so instead we went for the other obvious but less elegant solution of simulating the three button presses, port, starboard and Auto, on the TP5000 with relays.
+Attempts to talk to and control the TP5000 over NMEA0183 via the yellow/green NMEA wires on the power lead failed, so instead the other obvious but less elegant solution of simulating the three button presses, port, starboard and Auto, on the TP5000 with relays was adopted.
 
 ### Components
 - 1 x Arduino Nano33 BLE https://www.arduino.cc/en/Guide/NANO33BLE
@@ -20,20 +20,22 @@ Attempts to talk to and control the TP5000 over NMEA0183 via the yellow/green NM
 ## Development
 ### Software
 #### Arduino app
-We used the latest Arduino IDE 1.8.16 for the project (not that it should matter which version you use) and used this getting started guide to help:-
+The latest Arduino IDE 1.8.16 was used for the project (not that it should matter which version is used) together with this getting started guide to help:-
 
 https://www.arduino.cc/en/Guide/NANO33BLE
 
-We wrote a simple Ardiuno app ( code in this project ) to control the relays via 3 digital output pins (D2,D3 & D4; physical pins 5,6 & 7) from the Arduino and an analogueinput pin (A0; pin 19)to monitor the Auto status light on the TP5000. 
+The Ardiuno app source code is included wih this project. It controls the relays via 3 digital output pins (D2,D3 & D4; physical pins 5,6 & 7) from the Arduino and an analogue input pin (A0; pin 19)to monitor the Auto status light on the TP5000. 
 
 #### iOS app
-We then wrote an iOS app to send commands via Bluetooth to the Nano. The code built on this example https://www.raywenderlich.com/85900/arduino-tutorial-integrating-bluetooth-le-ios-swift from Ray Wenderlich. Code is included in this project.
+An iOS app was developed to send commands via Bluetooth to the Nano. The code built on this example https://www.raywenderlich.com/85900/arduino-tutorial-integrating-bluetooth-le-ios-swift from Ray Wenderlich. The iOS app soure code is included in this project.
 
-## Hardware
-We used the 12V supply inside the TP5000 (from the back of the remote port socket) to power the Nano33 BLE ( the Nano can use anything from. 3.3 to 30V to power it!).
-We soldered the 3 relays to the back of the microswitches on the TP5000 switch and led board.
+![IMG_FEFDF58D98D4-1](https://user-images.githubusercontent.com/463068/140383617-818c3ca1-f8ab-4619-ac8b-44fb0b4f8e98.jpeg)
 
-We had chosen small reed relays with the highest drive impedance (hence lowest current -  10mA) we could find but unfortunately found the Nano33 could not drive the relays using 3.3V digital output pins directly so we had to add a relay driver board and a 5V regulator to drive them indirectly. We removed the large relays that came on the board and cut it in half ( at the line where the connection to the relay driver pins is) so that it would fit inside the TP5000. The output driver pins were wired to the relays on the back to the TP5000 controller board. The +3.3V regulated output from the Nano (pin 17) was still not powerful enough to drive the relays so we had to add a 5V supply. The 5V regulator was attached to the 12V power supply rather than try to find and attach to a 5V supply on the main TP5000 circuit board.
+The 12V supply inside the TP5000 (from the back of the remote port socket) was used to power the Nano33 BLE ( the Nano can use anything from. 3.3 to 30V to power it!).
+
+The 3 relays were solderd to the back of the microswitches on the TP5000 switch and led board.
+
+Small reed relays with the highest drive impedance (hence lowest current -  10mA) were chosen but unfortunately the Nano33 just could not drive the relays using its 3.3V digital output pins directly so a relay driver board and a 5V regulator were added to drive them indirectly. The large relays that came on the board were removed and the board cut in half ( at the line where the connection to the relay driver pins is) so that it would fit inside the TP5000. The output driver pins were wired to the relays on the back to the TP5000 controller board. The +3.3V regulated output from the Nano (pin 17) was still not powerful enough to drive the relays so a 5V supply was added. The 5V regulator was attached to the 12V power supply rather than try to find and attach to a 5V supply on the main TP5000 circuit board.
 
 Here is the Arduino Nano33 BLE pin out (Note the pin labels are the constant names used in the Arduino app - e.g. physical pin5 is software pin D2).
 
