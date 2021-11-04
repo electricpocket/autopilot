@@ -1,6 +1,6 @@
 # Bluetooth iOS remote for Navico TP5000
 
-This project is for an iOS Bluetooth remote control for the Navico TP5000 autopilot
+This project is <a href="https://pocketmariner.com">PocketMariner's<a> iOS Bluetooth remote control for the Navico TP5000 autopilot.
 
 <img src="https://user-images.githubusercontent.com/463068/140337885-da3f190a-4a87-4f6d-9f18-b0aabbac31da.jpeg" alt="App and TP5000" width="500"/>
 
@@ -44,4 +44,6 @@ Here is the Arduino Nano33 BLE pin out (Note the pin labels are the constant nam
 Fitting the Nano and the Relay driver board and all the wires inside the TP5000 housing was a bit of a struggle. Some judicous application of hot glue to hold things in place helped. And voila:-
 
 [Video of the app in action](https://youtu.be/SloeDqlF8rE)
+ 
+Contact help@pocketmariner.com for more information or suggestions.
 
