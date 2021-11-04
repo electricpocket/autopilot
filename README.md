@@ -41,7 +41,7 @@ Here is the Arduino Nano33 BLE pin out (Note the pin labels are the constant nam
 
 <img width="574" alt="Screenshot 2021-11-04 at 15 35 49" src="https://user-images.githubusercontent.com/463068/140360352-0740f7b8-dcc0-4869-835b-e54d204a1956.png">
 
-Fitting the Nano and the Relay driver boards and all the wires inside the TP5000 was a bit of a struggle. Helped with some judicous application of hot glue to hold things in place. And voila:-
+Fitting the Nano and the Relay driver board and all the wires inside the TP5000 housing was a bit of a struggle. Some judicous application of hot glue to hold things in place helped. And voila:-
 
 [Video of the app in action](https://youtu.be/SloeDqlF8rE)
 
