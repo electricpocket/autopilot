@@ -13,7 +13,7 @@ Attempts to talk to and control the TP5000 over NMEA0183 via the yellow/green NM
 
 ### Components
 - 1 x Arduino Nano33 BLE https://www.arduino.cc/en/Guide/NANO33BLE
-- 3 x 3-5V NOReed Relays -  D31A3100 SPST NO relay 500ohms coil resistance =>  10mA switching current at 5V https://uk.rs-online.com/web/p/reed-relays/1782703/
+- 3 x 3-5V NO Reed Relays -  D31A3100 SPST NO relay 500ohms coil resistance =>  10mA switching current at 5V https://uk.rs-online.com/web/p/reed-relays/1782703/
 - 1 Relay driver board - 3 Channel 3.3V/5V 10A Relay Module for Arduino RPi ESP8266 + Optocoupler https://www.ebay.co.uk/itm/272607156352
 - 1 5V regulator 78L05 - https://www.ebay.co.uk/itm/121681683380
 
