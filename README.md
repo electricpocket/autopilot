@@ -7,7 +7,7 @@ This project is for an iOS Bluetooth remote control for the Navico TP5000 autopi
 [Video of the app in action](https://youtu.be/SloeDqlF8rE)
 
 ## Design
-The basic idea was to mount a bluetooth module inside the Navico TP5000 that would communicate with an iPhone iOS app which could send instructions via Bluetooth LE to the TP5000 to turn to port or starboard.
+The basic idea was to mount a bluetooth module inside the Navico TP5000 that would communicate with an iPhone iOS app to send instructions via Bluetooth LE to the TP5000 to turn to port or starboard.
 
 Attempts to talk to and control the TP5000 over NMEA0183 via the yellow/green NMEA wires on the power lead failed, so instead we went for the other obvious but less elegant solution of simulating the three button presses, port, starboard and Auto, on the TP5000 with relays.
 
