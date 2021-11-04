@@ -5,11 +5,12 @@
 #include <ArduinoBLE.h>
 
 
-#define BUTTON_DELAY 500
+#define BUTTON_DELAY 150
 
 #define PORT_ONE 2 //pin 5 D2
 #define STBD_ONE 3 //pin 6 D3
 #define AUTO 4 //pin 7 D4
+#define STATUS_CHECK_TIME 250 //check the status light voltage every 250ms
 
 static const char* greeting = "Hello World!";
 int sensorPin = A0;    // Anaolgue select the input pin for led flashing light on the Navico
@@ -41,6 +42,7 @@ void switchCharacteristicWritten(BLEDevice central, BLECharacteristic characteri
   Serial.print("Characteristic event, written: ");
   String val = (char*)(characteristic.value());
   Serial.println(val.charAt(0));
+  Serial.println(millis());
   switch (val.charAt(0)) {
         case '1':
           digitalWrite(PORT_ONE, HIGH);
@@ -60,7 +62,21 @@ void switchCharacteristicWritten(BLEDevice central, BLECharacteristic characteri
         case '6':
           digitalWrite(AUTO, LOW);
           break;
-        default:
+        case '7':
+          pressButton(PORT_ONE);
+          break;
+        case '8':
+          pressButton(STBD_ONE);
+          break;
+        case '9':
+          pressButton(AUTO);
+          break;
+        case '0': //clear all
+          digitalWrite(PORT_ONE, LOW);
+          digitalWrite(STBD_ONE, LOW);
+          digitalWrite(AUTO, LOW);
+          break;
+       default:
           Serial.print("Unknown command: ");
           Serial.println(val);
           break;    
@@ -126,26 +142,30 @@ void loop() {
     //Serial.println(central.address());
     // turn on the LED to indicate the connection:
     digitalWrite(LED_BUILTIN, HIGH);
-
+    unsigned long relayStartMills = millis();
     while (central.connected())
     {
-      float autoValue = analogRead(sensorPin);
-      if (( autoValue > modeOnLevel) and (modeStatus == false))
+      if (millis() - relayStartMills >=  STATUS_CHECK_TIME)
       {
-        modeStatus = true;
-        autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string 
-        Serial.println("ModeOn"); 
-      }
-      else if (( autoValue <= modeOnLevel) and (modeStatus != false))
-      {
-        modeStatus = false;
-        autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string  
-        Serial.println("ModeOff"); 
-      }
+        float autoValue = analogRead(sensorPin);
       
-      Serial.print("Read analogue: ");
-      Serial.println(String(autoValue));
-      delay(250);
+        if (( autoValue > modeOnLevel) and (modeStatus == false))
+        {
+          modeStatus = true;
+          autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string 
+          Serial.println("ModeOn"); 
+        }
+        else if (( autoValue <= modeOnLevel) and (modeStatus != false))
+        {
+          modeStatus = false;
+          autoModeCharacteristic.setValue(String(autoValue)); // Set greeting string  
+          Serial.println("ModeOff"); 
+        }
+      
+        //Serial.print("Read analogue: ");
+        //Serial.println(String(autoValue));
+        //don't sleep otherwise the digital interrupts get delayed
+      }
       //handle autohelm commands 
     }// keep looping while connected
     
