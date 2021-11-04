@@ -29,7 +29,8 @@ The Ardiuno app source code is included wih this project. It controls the relays
 #### iOS app
 An iOS app was developed to send commands via Bluetooth to the Nano. The code built on this example https://www.raywenderlich.com/85900/arduino-tutorial-integrating-bluetooth-le-ios-swift from Ray Wenderlich. The iOS app soure code is included in this project.
 
-![IMG_FEFDF58D98D4-1](https://user-images.githubusercontent.com/463068/140383617-818c3ca1-f8ab-4619-ac8b-44fb0b4f8e98.jpeg)
+![IMG_FEFDF58D98D4-1 copy](https://user-images.githubusercontent.com/463068/140384072-f38c71db-bda1-489d-868b-78e701eda007.png)
+
 
 The 12V supply inside the TP5000 (from the back of the remote port socket) was used to power the Nano33 BLE ( the Nano can use anything from. 3.3 to 30V to power it!).
 
